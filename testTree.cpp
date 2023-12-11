@@ -1,7 +1,7 @@
 #include "token.h"
 #include "testTree.h"
 #include "parser.h"  
-#include "staticSemantics.h"
+#include "generator.h"
 #include <iostream> 
 #include <string> 
 

@@ -5,7 +5,7 @@
 #include "scanner.h"
 #include "testTree.h" 
 #include "parser.h" 
-#include "staticSemantics.h"  
+#include "generator.h"  
 
 using namespace std; 
 
