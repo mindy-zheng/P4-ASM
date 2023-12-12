@@ -78,8 +78,8 @@ typedef struct Token {
 } Token;
 */
 
+/*
 void staticSemantics(node *n, find_stack& id_stack) { 
-	//cout << "Entering staticSemantics" << endl; 
 	if (n != nullptr) {
 		if (n-> label == block_node) {
 			int var_count = 0; 
@@ -97,8 +97,8 @@ void staticSemantics(node *n, find_stack& id_stack) {
 	//cout << "Exiting static semantics" << endl; 
 }
 
+
 void preorder(node *n, int& var_count, find_stack& id_stack) { 
-	//cout << "Entering preorder" << endl; 
 	if (n != nullptr) {
 		verifyNode(n, var_count, id_stack); 
 	
@@ -111,7 +111,6 @@ void preorder(node *n, int& var_count, find_stack& id_stack) {
 } 
 
 void verifyNode(node *n, int &var_count, find_stack& id_stack) { 
-	//cout << "Entering verifyNode" << endl; 
 	if (n-> label == varList_node) { 
 		if (n-> token1.tokenType == IDENTIFIER_TOKEN) { 
 			if (var_count > 0) { 
@@ -129,3 +128,4 @@ void verifyNode(node *n, int &var_count, find_stack& id_stack) {
 	}
 	//cout << "Exiting verifyNode" << endl; 
 }
+*/ 

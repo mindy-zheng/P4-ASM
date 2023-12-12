@@ -2,6 +2,7 @@
 #define STATICSEMANTICS_H
 #include "token.h"
 #include "testTree.h" 
+#include <iostream> 
 #include <fstream>
 #pragma once 
 
@@ -27,6 +28,7 @@ public:
 	void push(const Token& tk); 
 	void pop(); 
 	void find(const Token &tk, int error); 
+	void printStack() const;
 }; 
 
 #endif

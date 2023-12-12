@@ -66,3 +66,13 @@ void find_stack::find(const Token &tk, int error) {
 	}
 } 
 
+void find_stack::printStack() const { 
+	int distance;
+	find_id* current_id = top; 
+	
+	cout << "Stack: " << endl; 
+	for (distance = 0; distance < size; distance++) { 
+		cout << current_id-> tk.tokenInstance << " " << distance << endl; 
+		current_id = current_id -> next; 
+	} 
+} 

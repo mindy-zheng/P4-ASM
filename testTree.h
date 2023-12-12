@@ -1,7 +1,6 @@
 #ifndef TESTTREE_H
 #define TESTTREE_H
 #include "token.h"
-#include "generator.h"
 #include "staticSemantics.h" 
 #pragma once  
 
@@ -41,11 +40,9 @@ typedef struct node {
 extern string token_types[]; 
 node *createNode(node_t);
 void visitNode(node *n, int depth);
-//void createNode(node_t);
 void traversePreorder(node *n, int depth);
 
-void staticSemantics(node *n, find_stack& id_stack); 
-void preorder(node *n, int& var_count, find_stack& id_stack); 
-void verifyNode(node *n, int& var_count, find_stack& id_stack); 
+//void staticSemantics(node *n, find_stack& id_stack); 
+//void verifyNode(node *n, int& var_count, find_stack& id_stack); 
 
 #endif

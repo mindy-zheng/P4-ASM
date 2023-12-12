@@ -2,7 +2,7 @@ CPP = g++
 
 CPP_FLAGS = -std=c++11 -Wall
 
-TARGET = P3 
+TARGET = comp 
 
 CPP_FILES = main.cpp scanner.cpp parser.cpp testTree.cpp staticSemantics.cpp generator.cpp
 
