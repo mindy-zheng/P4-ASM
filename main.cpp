@@ -11,44 +11,59 @@
 using namespace std; 
 
 int main(int argc, char *argv[]) {
-	ifstream inFile; 
+	ifstream inFile;
+	ofstream outFile;  
 	istream *input_stream;  
 	string file; 
 	
 	if (argc > 2) { 
 		cout << "Too many arguments passed." << endl; 
-		return 1; 
+		return argc; 
 	}
 
-	if (argc == 1) {
-        	input_stream = &cin; // stdin
-    	} else {
-		file = string(argv[1]); 
-		if (file.substr(file.size()-4) != ".f23") {
-                        file += ".f23";
-                }
-		inFile.open(file); 
-		if (!inFile.is_open()) { 
-			cout << "Error opening the file." << endl; 
-			return 1; 
-		} else { 
-			input_stream = &inFile; 
+	if (argc == 2) {
+		string input_extension = ".f23"; 
+		file = argv[1];
+		// Check if file is present with extension: 
+		if (file.substr(file.size() - input_extension.size()) != input_extension) { 
+			 file += input_extension;
 		} 
-	} 
+	  
+		inFile.open(file); 
 
-	find_stack id_stack; 
+		if (!inFile.is_open()) { 
+			cout << "File was not opened." << endl; 
+			return 1; 
+		} 
+		input_stream = &inFile; 
+    	} else {
+		const string output_name = "a"; 
+		file = output_name; 
+		input_stream = &std::cin; 
+	}  
+
+	//find_stack id_stack; 
 	// Parser:
 	node *root = parser(*input_stream); 
-	//traversePreorder(root, 0);
-	//cout << "Calling Static Semantics... " << endl;  
-	//staticSemantics(root, id_stack);
-	//cout << "Static Semantics finished!" << endl;
-	
-	
 	if (inFile.is_open()) { 
 		inFile.close(); 
+	}
+		
+	// Prepare output file 
+	file = file.substr(0, file.size() - 4) + ".asm"; 
+	outFile.open(file); 
+	
+	if (!outFile.is_open()) { 
+		cout << "Error opening asm file" << endl; 
+		return 1; 
 	} 
+	
+	// Call generator
+	generator(root, &outFile); 
+	outFile.close(); 
 
+	cout << "Target file created: " << file << endl; 
+	
 	return 0; 
 }
 

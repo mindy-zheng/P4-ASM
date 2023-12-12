@@ -38,25 +38,23 @@ void find_stack::pop() {
 		size--; 
 		//cout << "Popped" << std::endl;
 	} else {
-		//cout << "STACK EMPTY" << endl; 
+		cout << "STACK EMPTY" << endl; 
 		exit(size); 
 	}
 } 
 
-void find_stack::find(const Token &tk, int error) { 
-	int distance = 0; 
+int find_stack::find(const Token &tk, int error) { 
 	find_id* current_id = top; 
 
-	for(; distance < size; distance++) { 
+	for(int distance = 0; distance < size; distance++) { 
 		if (tk.tokenInstance == current_id-> tk.tokenInstance) { 
 			if (error == 1) { 
 				cout << "Static Semantics Error: Variable - '" << tk.tokenInstance << "' previously defined on line: " << current_id -> tk.lineNumber << "( " << tk.lineNumber << ")" << endl; 
 				exit(current_id-> tk.lineNumber); 
 			} else if (error == 2) { 
-				return; 
+				return distance; 
 			}
 		} 
-
 		current_id = current_id -> next; 
 	} 
 
@@ -64,6 +62,7 @@ void find_stack::find(const Token &tk, int error) {
 		cout << "Static Semantics Error: Variable - '" << tk.tokenInstance << "' previously defined on line: " << tk.lineNumber << endl; 
 		std::exit(tk.lineNumber); 
 	}
+	return -1;
 } 
 
 void find_stack::printStack() const { 
@@ -75,4 +74,4 @@ void find_stack::printStack() const {
 		cout << current_id-> tk.tokenInstance << " " << distance << endl; 
 		current_id = current_id -> next; 
 	} 
-} 
+}

@@ -27,7 +27,7 @@ public:
 
 	void push(const Token& tk); 
 	void pop(); 
-	void find(const Token &tk, int error); 
+	int find(const Token &tk, int error); 
 	void printStack() const;
 }; 
 

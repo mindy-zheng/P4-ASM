@@ -25,7 +25,7 @@ XOPEN_TOKEN, XCLOSE_TOKEN, XLOOP_TOKEN, XDATA_TOKEN, XEXIT_TOKEN, XIN_TOKEN, XOU
 node* parser(istream &file) { 
 	node *root;
 
-	cout << "Beginning parser" << endl;  
+	//cout << "Beginning parser" << endl;  
 
 	lookahead_ch(file); 
 	token = scanner(file); 
@@ -316,14 +316,15 @@ node *If(istream &file) {
 	if (token.tokenType == XCOND_TOKEN) { 
 		token = scanner(file); 
 
-		if (token.tokenType == LEFT_BRACE_TOKEN) {
+		if (token.tokenInstance == "[") {
 			token = scanner(file); 
 			n -> c1 = exp(file); 
 			n -> c2 = RO(file); 
 			n -> c3 = exp(file); 
 		
-			if (token.tokenType == RIGHT_BRACE_TOKEN) { 
+			if (token.tokenInstance == "]") { 
 				token = scanner(file); 
+				
 				n -> c4 = stat(file); 
 				return n; 
 			} 
@@ -341,13 +342,13 @@ node *loop(istream &file) {
 	if (token.tokenType == XLOOP_TOKEN) { 
 		token = scanner(file); 
 		
-		if (token.tokenType == LEFT_BRACE_TOKEN) {
+		if (token.tokenInstance == "[") {
                         token = scanner(file);
                         n -> c1 = exp(file);
                         n -> c2 = RO(file);
                         n -> c3 = exp(file);
 
-                        if (token.tokenType == RIGHT_BRACE_TOKEN) {
+                        if (token.tokenInstance == "]") {
                                 token = scanner(file);
                                 n -> c4 = stat(file);
                                 return n;
