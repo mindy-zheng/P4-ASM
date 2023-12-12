@@ -1,7 +1,8 @@
 #ifndef TESTTREE_H
 #define TESTTREE_H
 #include "token.h"
-#include "generator.h" 
+#include "generator.h"
+#include "staticSemantics.h" 
 #pragma once  
 
 

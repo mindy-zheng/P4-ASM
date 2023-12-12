@@ -2,6 +2,7 @@
 #include "testTree.h"
 #include "parser.h"  
 #include "generator.h"
+#include "staticSemantics.h"
 #include <iostream> 
 #include <string> 
 

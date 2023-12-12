@@ -6,6 +6,7 @@
 #include <vector> 
 #include "token.h" 
 #include "testTree.h" 
+#include "generator.h" 
 #include "staticSemantics.h"  
 
 using namespace std;
